@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">RecipeBook</string>
     <string name="title">Recipe Book</string>
+    <string name="recipeName">Recipe Name</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="steps">Steps</string>
+    <string name="time">Time</string>
+    <string name="minutes">minutes</string>
+    <string name="addRecipe">Add a Recipe</string>
 </resources>
