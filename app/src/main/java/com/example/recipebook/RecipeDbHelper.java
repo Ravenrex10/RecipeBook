@@ -1,9 +1,15 @@
 package com.example.recipebook;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class RecipeDbHelper extends SQLiteOpenHelper {
 
@@ -56,5 +62,48 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
         return db.insert(RecipeContract.RecipeEntry.TABLE_NAME, null, values);
     }
 
+    public void deleteRecipe(long recipeID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(RecipeContract.RecipeEntry.TABLE_NAME, "id = ?", new String[]{String.valueOf(recipeID)});
+        db.close();
     }
+
+    @SuppressLint("Range")
+    public List<Recipe> getAllRecipes(){
+        List<Recipe> recipeList = new ArrayList<>();
+        String[] columns = {
+                RecipeContract.RecipeEntry._ID,
+                RecipeContract.RecipeEntry.COLUMN_NAME_NOMBRE,
+                RecipeContract.RecipeEntry.COLUMN_NAME_INGREDIENTES,
+                RecipeContract.RecipeEntry.COLUMN_NAME_PASOS,
+                RecipeContract.RecipeEntry.COLUMN_NAME_TIEMPO
+        };
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.query(RecipeContract.RecipeEntry.TABLE_NAME, null, null, null, null, null, null); //Los parametros nulos en columnas y selección cogerá todos por defecto.
+        String nombre = "";
+        String ingredienteString = "";
+        List<String> ingredientes = new ArrayList<String>();
+        String pasos = "";
+        Double tiempo = 0.0;
+
+        try {
+            while (cursor.moveToNext()) {
+                nombre = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_NOMBRE));
+                ingredienteString = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_INGREDIENTES));
+                ingredientes = Arrays.asList(ingredienteString.split(","));
+                pasos = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_PASOS));
+                tiempo = Double.parseDouble(cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_TIEMPO)));
+
+                Recipe receta = new Recipe(nombre, ingredientes, pasos, tiempo);
+                recipeList.add(receta);
+            }
+        } finally {
+            cursor.close();
+        }
+        return recipeList;
+    }
+
+}
 

@@ -1,5 +1,6 @@
 package com.example.recipebook;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -78,5 +79,12 @@ public class MainActivity2 extends AppCompatActivity {
     // Delete
     private void deleteRecipe(int recipeID) {
 
+    }
+
+    @Override
+    public void finish() {
+        Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+        startActivity(intent);
+        super.finish();
     }
 }
