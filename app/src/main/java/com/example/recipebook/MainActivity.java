@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -69,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createRecipe() {
-
+        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+        startActivity(intent);
     }
 
     @SuppressLint("Range")

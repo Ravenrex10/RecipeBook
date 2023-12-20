@@ -2,6 +2,7 @@ package com.example.recipebook;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -41,7 +42,7 @@ public class MainActivity2 extends AppCompatActivity {
         String tiempoEnTexto = editTextTiempo.getText().toString();
 
         if (nombre.isEmpty() || ingredientes.isEmpty() || pasos.isEmpty() || tiempoEnTexto.isEmpty()) {
-            Toast.makeText(this, "¡Rellene todos los campos!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "¡Rellene todos los campos!", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -50,7 +51,7 @@ public class MainActivity2 extends AppCompatActivity {
         try {
             tiempo = Double.parseDouble((tiempoEnTexto));
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "El tiempo debe ser un valor númerico", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "El tiempo debe ser un valor númerico", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -59,11 +60,11 @@ public class MainActivity2 extends AppCompatActivity {
 
         // Si hay éxito muestra mensaje y cierra actividad, sino muestra mensaje de error
         if (newRowId != -1) {
-            Toast.makeText(this, "¡Receta agregada con éxito!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "¡Receta agregada con éxito!", Toast.LENGTH_LONG).show();
             finish();
         } else {
             // Error al agregar la receta
-            Toast.makeText(this, "Error al agregar la receta", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error al agregar la receta", Toast.LENGTH_LONG).show();
         }
     }
 

@@ -60,10 +60,11 @@
         android:id="@+id/buttonAgregarReceta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="addRecipe"
         android:text="Añadir receta"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTiempo"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTiempo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
