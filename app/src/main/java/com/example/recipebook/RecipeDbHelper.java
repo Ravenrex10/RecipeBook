@@ -1,5 +1,6 @@
 package com.example.recipebook;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -40,4 +41,20 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
-}
+
+    public long insertRecipe(String nombre, String ingredientes, String pasos, Double tiempo) {
+        // ContentValues sirve para pasar datos entre actividades y para operaciones con bases de datos para guardar pares column-value
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(RecipeContract.RecipeEntry.COLUMN_NAME_NOMBRE, nombre);
+        values.put(RecipeContract.RecipeEntry.COLUMN_NAME_INGREDIENTES, ingredientes);
+        values.put(RecipeContract.RecipeEntry.COLUMN_NAME_PASOS, pasos);
+        values.put(RecipeContract.RecipeEntry.COLUMN_NAME_TIEMPO, tiempo);
+
+        // Devuelvo la fila para comprobar comparando con -1 si se ha insertado bien o no
+        return db.insert(RecipeContract.RecipeEntry.TABLE_NAME, null, values);
+    }
+
+    }
+

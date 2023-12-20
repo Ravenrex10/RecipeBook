@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Add the card to the container
             recipeContainer.addView(recipeCardView);
+
         }
     }
 
@@ -103,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         } finally {
             cursor.close();
         }
-
         return recipeList;
     }
 }
