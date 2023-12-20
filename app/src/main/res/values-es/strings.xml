@@ -8,4 +8,10 @@
     <string name="time">Tiempo</string>
     <string name="minutes">minutos</string>
     <string name="addRecipe">Añadir una Receta</string>
+    <string name="addRecipe2">Añadir Receta</string>
+    <string name="fillAll">¡Rellene todos los campos!</string>
+    <string name="timeNumber">El tiempo debe ser un valor númerico</string>
+    <string name="recipeOK">¡Receta agregada con éxito!</string>
+    <string name="recipeError">Error al agregar la receta</string>
+    <string name="recipeDelete">¡Receta eliminada con éxito!</string>
 </resources>

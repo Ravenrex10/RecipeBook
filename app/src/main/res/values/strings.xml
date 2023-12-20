@@ -7,4 +7,10 @@
     <string name="time">Time</string>
     <string name="minutes">minutes</string>
     <string name="addRecipe">Add a Recipe</string>
+    <string name="addRecipe2">Add Recipe</string>
+    <string name="fillAll">You must fill in all fields!</string>
+    <string name="timeNumber">Time must be a numeric value!</string>
+    <string name="recipeOK">Successfully added recipe!</string>
+    <string name="recipeError">Error while creating the recipe</string>
+    <string name="recipeDelete">Successfully deleted recipe!</string>
 </resources>

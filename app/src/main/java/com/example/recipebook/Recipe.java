@@ -5,11 +5,11 @@ import java.util.List;
 public class Recipe {
     private Long id;
     private String nombre;
-    private List<String> ingredientes;
+    private String ingredientes;
     private String pasos;
     private Double tiempo;
 
-    public Recipe(Long id, String nombre, List<String> ingredientes, String pasos, Double tiempo){
+    public Recipe(Long id, String nombre, String ingredientes, String pasos, Double tiempo){
         this.id = id;
         this.nombre = nombre;
         this.ingredientes = ingredientes;
@@ -22,7 +22,7 @@ public class Recipe {
         return nombre;
     }
 
-    public List<String> getIngredientes() {
+    public String getIngredientes() {
         return ingredientes;
     }
 

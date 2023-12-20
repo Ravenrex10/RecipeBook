@@ -10,58 +10,60 @@
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Título"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="cursive"
+        android:text="@string/title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNombre"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNombre" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextNombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Nombre"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/recipeName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextIngredientes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/editTextIngredientes" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
     <EditText
         android:id="@+id/editTextIngredientes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Ingredientes"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNombre"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/ingredients"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPasos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPasos" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
 
     <EditText
         android:id="@+id/editTextPasos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Pasos"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIngredientes"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/steps"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTiempo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTiempo" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextIngredientes" />
 
     <EditText
         android:id="@+id/editTextTiempo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Tiempo"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasos"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/time"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAgregarReceta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAgregarReceta" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPasos" />
 
     <Button
         android:id="@+id/buttonAgregarReceta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="addRecipe"
-        android:text="Añadir receta"
+        android:text="@string/addRecipe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

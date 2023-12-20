@@ -2,21 +2,16 @@ package com.example.recipebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -63,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             eliminateButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dbHelper.deleteRecipe(recipe.getId());
+                    deleteRecipe(recipe.getId(), recipeCardView);
                 }
             });
 
@@ -71,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
             recipeContainer.addView(recipeCardView);
 
         }
+    }
+
+    private void deleteRecipe(Long id, View recipeCardView){
+        dbHelper.deleteRecipe(id);
+        recipeContainer.removeView(recipeCardView);
+        Toast.makeText(this, R.string.recipeDelete, Toast.LENGTH_LONG).show();
     }
 
     public void onClick(View view) {

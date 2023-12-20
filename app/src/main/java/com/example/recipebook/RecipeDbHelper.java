@@ -64,7 +64,7 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
 
     public void deleteRecipe(long recipeID) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(RecipeContract.RecipeEntry.TABLE_NAME, "id = ?", new String[]{String.valueOf(recipeID)});
+        db.delete(RecipeContract.RecipeEntry.TABLE_NAME, "_id = ?", new String[]{String.valueOf(recipeID)});
         db.close();
     }
 
@@ -84,8 +84,7 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(RecipeContract.RecipeEntry.TABLE_NAME, null, null, null, null, null, null); //Los parametros nulos en columnas y selección cogerá todos por defecto.
         Long id = null;
         String nombre = "";
-        String ingredienteString = "";
-        List<String> ingredientes = new ArrayList<String>();
+        String ingredientes = "";
         String pasos = "";
         Double tiempo = 0.0;
 
@@ -93,8 +92,7 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 id = Long.parseLong(cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry._ID)));
                 nombre = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_NOMBRE));
-                ingredienteString = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_INGREDIENTES));
-                ingredientes = Arrays.asList(ingredienteString.split(","));
+                ingredientes = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_INGREDIENTES));
                 pasos = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_PASOS));
                 tiempo = Double.parseDouble(cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_TIEMPO)));
 
