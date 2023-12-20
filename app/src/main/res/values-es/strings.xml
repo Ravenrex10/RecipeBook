@@ -2,4 +2,10 @@
 <resources>
     <string name="app_name">RecipeBook</string>
     <string name="title">Libro De Recetas</string>
+    <string name="recipeName">Nombre de la Receta</string>
+    <string name="ingredients">Ingredientes</string>
+    <string name="steps">Pasos</string>
+    <string name="time">Tiempo</string>
+    <string name="minutes">minutos</string>
+    <string name="addRecipe">Añadir una Receta</string>
 </resources>

@@ -3,9 +3,13 @@ package com.example.recipebook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -17,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecipeDbHelper dbHelper;
     private SQLiteDatabase db;
-    private ScrollView recipeContainer;
+    private LinearLayout recipeContainer;
     private List<Recipe> recipeList;
 
     @Override
@@ -25,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        recipeContainer = findViewById(R.id.recipeContainer);
+
         dbHelper = new RecipeDbHelper(getApplicationContext(), "recipe.db");
         db = dbHelper.getWritableDatabase();
 
-        recipeContainer = findViewById(R.id.recipeContainer);
-
-        listRecipes();  // Listar todas las recetas al abrir la aplicación.
+        listRecipes();  // Listar todas las recetas.
     }
 
 
@@ -38,19 +42,34 @@ public class MainActivity extends AppCompatActivity {
         List<Recipe> recipeList = getAllRecipes();
 
         for(Recipe recipe : recipeList){
-            TextView recipeTextView = new TextView(this);
-            recipeTextView.setText("Recipe Name: " + recipe.getNombre() + "\n" +
-                    "Ingredients: " + recipe.getIngredientes() + "\n" +
-                    "Steps: " + recipe.getPasos() + "\n" +
-                    "Time: " + recipe.getTiempo() + " minutes\n" +
-                    "----------------------------------");
 
-            // Set text appearance or other properties as needed
-            recipeTextView.setTextSize(16);
+            View recipeCardView = LayoutInflater.from(this).inflate(R.layout.recipe_card, null);
 
-            // Add the TextView to the LinearLayout
-            recipeContainer.addView(recipeTextView);
+            // Views para el "card" del frontend
+            TextView textRecipeName = recipeCardView.findViewById(R.id.textRecipeName);
+            TextView textIngredients = recipeCardView.findViewById(R.id.textIngredients);
+            TextView textSteps = recipeCardView.findViewById(R.id.textSteps);
+            TextView textTime = recipeCardView.findViewById(R.id.textTime);
+
+            textRecipeName.setText(getString(R.string.recipeName) + ": " + recipe.getNombre());
+            textIngredients.setText(getString(R.string.ingredients) + ": " + recipe.getIngredientes());
+            textSteps.setText(getString(R.string.steps) + ": " + recipe.getPasos());
+            textTime.setText(getString(R.string.time) + " " + recipe.getTiempo() + " " + getString(R.string.minutes));
+
+            // Add the card to the container
+            recipeContainer.addView(recipeCardView);
+
         }
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.createRecipe: createRecipe(); break;
+        }
+    }
+
+    private void createRecipe() {
+
     }
 
     @SuppressLint("Range")
@@ -69,11 +88,10 @@ public class MainActivity extends AppCompatActivity {
         String ingredienteString = "";
         List<String> ingredientes = new ArrayList<String>();
         String pasos = "";
-        Double tiempo = -1.0;
+        Double tiempo = 0.0;
 
         try {
             while (cursor.moveToNext()) {
-
                 nombre = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_NOMBRE));
                 ingredienteString = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_INGREDIENTES));
                 ingredientes = Arrays.asList(ingredienteString.split(","));
@@ -86,10 +104,6 @@ public class MainActivity extends AppCompatActivity {
         } finally {
             cursor.close();
         }
-
-        recipeList.add(new Recipe("Recipe 1", Arrays.asList("Ingredient 1", "Ingredient 2"), "Step 1, Step 2", 30.0));
-        recipeList.add(new Recipe("Recipe 2", Arrays.asList("Ingredient 3", "Ingredient 4"), "Step 1, Step 2, Step 3", 45.0));
-
         return recipeList;
     }
 }
