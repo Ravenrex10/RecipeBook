@@ -82,6 +82,7 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.query(RecipeContract.RecipeEntry.TABLE_NAME, null, null, null, null, null, null); //Los parametros nulos en columnas y selección cogerá todos por defecto.
+        Long id = null;
         String nombre = "";
         String ingredienteString = "";
         List<String> ingredientes = new ArrayList<String>();
@@ -90,13 +91,14 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
 
         try {
             while (cursor.moveToNext()) {
+                id = Long.parseLong(cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry._ID)));
                 nombre = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_NOMBRE));
                 ingredienteString = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_INGREDIENTES));
                 ingredientes = Arrays.asList(ingredienteString.split(","));
                 pasos = cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_PASOS));
                 tiempo = Double.parseDouble(cursor.getString(cursor.getColumnIndex(RecipeContract.RecipeEntry.COLUMN_NAME_TIEMPO)));
 
-                Recipe receta = new Recipe(nombre, ingredientes, pasos, tiempo);
+                Recipe receta = new Recipe(id, nombre, ingredientes, pasos, tiempo);
                 recipeList.add(receta);
             }
         } finally {

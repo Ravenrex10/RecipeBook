@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             eliminateButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //ELIMINAR recipe.getId()
+                    dbHelper.deleteRecipe(recipe.getId());
                 }
             });
 
