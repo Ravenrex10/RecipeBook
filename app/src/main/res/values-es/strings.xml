@@ -14,4 +14,5 @@
     <string name="recipeOK">¡Receta agregada con éxito!</string>
     <string name="recipeError">Error al agregar la receta</string>
     <string name="recipeDelete">¡Receta eliminada con éxito!</string>
+    <string name="delete">Eliminar</string>
 </resources>

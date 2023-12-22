@@ -68,18 +68,6 @@ public class MainActivity2 extends AppCompatActivity {
         }
     }
 
-    // Read
-
-    // Update
-    private void updateRecipe(int recipeID, String nombre, List<String> ingredientes, String pasos, Double tiempo) {
-
-    }
-
-    // Delete
-    private void deleteRecipe(int recipeID) {
-
-    }
-
     @Override
     public void finish() {
         Intent intent = new Intent(MainActivity2.this, MainActivity.class);

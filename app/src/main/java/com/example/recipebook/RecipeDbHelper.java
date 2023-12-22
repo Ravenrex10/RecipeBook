@@ -59,7 +59,9 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
         values.put(RecipeContract.RecipeEntry.COLUMN_NAME_TIEMPO, tiempo);
 
         // Devuelvo la fila para comprobar comparando con -1 si se ha insertado bien o no
-        return db.insert(RecipeContract.RecipeEntry.TABLE_NAME, null, values);
+        long fila = db.insert(RecipeContract.RecipeEntry.TABLE_NAME, null, values);
+        db.close();
+        return fila;
     }
 
     public void deleteRecipe(long recipeID) {
@@ -102,6 +104,7 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
         } finally {
             cursor.close();
         }
+        db.close();
         return recipeList;
     }
 

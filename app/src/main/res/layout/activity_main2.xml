@@ -33,30 +33,36 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/ingredients"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPasos"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.287" />
 
     <EditText
         android:id="@+id/editTextPasos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/steps"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTiempo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIngredientes" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextIngredientes"
+        app:layout_constraintVertical_bias="0.099" />
 
     <EditText
         android:id="@+id/editTextTiempo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/time"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAgregarReceta"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasos" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPasos"
+        app:layout_constraintVertical_bias="0.123" />
 
     <Button
         android:id="@+id/buttonAgregarReceta"
@@ -66,7 +72,9 @@
         android:text="@string/addRecipe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTiempo" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTiempo"
+        app:layout_constraintVertical_bias="0.372" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

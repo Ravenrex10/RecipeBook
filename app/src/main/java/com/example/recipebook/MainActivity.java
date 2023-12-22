@@ -17,9 +17,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecipeDbHelper dbHelper;
-    private SQLiteDatabase db;
+    // private SQLiteDatabase db;
     private LinearLayout recipeContainer;
-    private List<Recipe> recipeList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +28,10 @@ public class MainActivity extends AppCompatActivity {
         recipeContainer = findViewById(R.id.recipeContainer);
 
         dbHelper = new RecipeDbHelper(getApplicationContext(), "recipe.db");
-        db = dbHelper.getWritableDatabase();
+        // db = dbHelper.getWritableDatabase();
 
         listRecipes();  // Listar todas las recetas.
     }
-
 
     public void listRecipes() {
         dbHelper = new RecipeDbHelper(getApplicationContext(), "recipe.db");
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             textRecipeName.setText(getString(R.string.recipeName) + ": " + recipe.getNombre());
             textIngredients.setText(getString(R.string.ingredients) + ": " + recipe.getIngredientes());
             textSteps.setText(getString(R.string.steps) + ": " + recipe.getPasos());
-            textTime.setText(getString(R.string.time) + " " + recipe.getTiempo() + " " + getString(R.string.minutes));
+            textTime.setText(getString(R.string.time) + ": " + recipe.getTiempo() + " " + getString(R.string.minutes));
 
             eliminateButton.setOnClickListener(new View.OnClickListener() {
                 @Override

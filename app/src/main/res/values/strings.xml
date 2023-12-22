@@ -13,4 +13,5 @@
     <string name="recipeOK">Successfully added recipe!</string>
     <string name="recipeError">Error while creating the recipe</string>
     <string name="recipeDelete">Successfully deleted recipe!</string>
+    <string name="delete">Delete</string>
 </resources>
